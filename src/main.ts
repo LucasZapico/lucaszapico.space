@@ -1,4 +1,4 @@
-import { followEl } from './followCard.ts'
+// import { followEl } from './followCard.ts'
 import './style.scss'
 import { svgTree } from './tree.ts'
 
@@ -14,5 +14,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 
 svgTree(document.querySelector<HTMLDivElement>('#tree')!)
-followEl(document.querySelector<HTMLDivElement>('.card')!)
+// followEl(document.querySelector<HTMLDivElement>('.card')!)
 
