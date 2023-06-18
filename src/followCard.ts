@@ -79,68 +79,68 @@
 
 
 
-export function followEl(element: HTMLDivElement){
-let constrain = 20;
-let mouseOverContainer = document.getElementById("card-wraper");
-let ex1Layer = document.getElementById("card");
+// export function followEl(element: HTMLDivElement){
+// let constrain = 20;
+// let mouseOverContainer = document.getElementById("card-wraper");
+// let ex1Layer = document.getElementById("card");
 
-let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+// let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-if(!ex1Layer){return -1}
+// if(!ex1Layer){return -1}
 
-ex1Layer.onmousedown = dragMouseDown;
+// ex1Layer.onmousedown = dragMouseDown;
 
-function dragMouseDown(e: any) {
-    e = e || window.event;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
+// function dragMouseDown(e: any) {
+//     e = e || window.event;
+//     e.preventDefault();
+//     pos3 = e.clientX;
+//     pos4 = e.clientY;
+//     document.onmouseup = closeDragElement;
+//     document.onmousemove = elementDrag;
+//   }
 
-function elementDrag(e: any) {
-  e = e || window.event;
-  e.preventDefault();
-  // calculate the new cursor position:
-  pos1 = pos3 - e.clientX;
-  pos2 = pos4 - e.clientY;
-  pos3 = e.clientX;
-  pos4 = e.clientY;
-  // set the element's new position:
-  if(e.target == ex1Layer) {
-    e.target.style.top = (e.target.offsetTop - pos2) + "px";
-    e.target.style.left = (e.target.offsetLeft - pos1) + "px";    
-  }
-}
-function closeDragElement() {
-  // stop moving when mouse button is released:
- document.onmouseup = null;
- document.onmousemove = null;
-}
+// function elementDrag(e: any) {
+//   e = e || window.event;
+//   e.preventDefault();
+//   // calculate the new cursor position:
+//   pos1 = pos3 - e.clientX;
+//   pos2 = pos4 - e.clientY;
+//   pos3 = e.clientX;
+//   pos4 = e.clientY;
+//   // set the element's new position:
+//   if(e.target == ex1Layer) {
+//     e.target.style.top = (e.target.offsetTop - pos2) + "px";
+//     e.target.style.left = (e.target.offsetLeft - pos1) + "px";    
+//   }
+// }
+// function closeDragElement() {
+//   // stop moving when mouse button is released:
+//  document.onmouseup = null;
+//  document.onmousemove = null;
+// }
 
-function transforms(x: number, y: number, el: any) {
-  let box = el.getBoundingClientRect();
-  let calcX = -(y - box.y - (box.height / 2)) / constrain;
-  let calcY = (x - box.x - (box.width / 2)) / constrain;
+// function transforms(x: number, y: number, el: any) {
+//   let box = el.getBoundingClientRect();
+//   let calcX = -(y - box.y - (box.height / 2)) / constrain;
+//   let calcY = (x - box.x - (box.width / 2)) / constrain;
   
-  return "perspective(100px) "
-    + "   rotateX("+ calcX +"deg) "
-    + "   rotateY("+ calcY +"deg) ";
-};
+//   return "perspective(100px) "
+//     + "   rotateX("+ calcX +"deg) "
+//     + "   rotateY("+ calcY +"deg) ";
+// };
 
- function transformElement(el: any, xyEl: any) {
-  el.style.transform  = transforms.apply(null, xyEl);
-}
+//  function transformElement(el: any, xyEl: any) {
+//   el.style.transform  = transforms.apply(null, xyEl);
+// }
 
-if(!mouseOverContainer){return -1}
-mouseOverContainer.onmousemove = function(e) {
-  let xy = [e.clientX, e.clientY];
-  let position = xy.concat([ex1Layer]);
+// if(!mouseOverContainer){return -1}
+// mouseOverContainer.onmousemove = function(e) {
+//   let xy = [e.clientX, e.clientY];
+//   let position = xy.concat([ex1Layer]);
 
-  window.requestAnimationFrame(function(){
-    transformElement(ex1Layer, position);
-  });
-};
+//   window.requestAnimationFrame(function(){
+//     transformElement(ex1Layer, position);
+//   });
+// };
 
-}
+// }
