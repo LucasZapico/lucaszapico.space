@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@700&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+
+
+#bg {
+  border-radius: 100%;
+  filter: blur(100px);
+  position: absolute;
+  z-index: -1;
+  background: rgb(0,30,36);
+  background: linear-gradient(50deg, rgba(0,30,36,1) 0%, rgba(9,93,117,1) 35%, rgba(7,152,176,1) 59%, rgba(0,212,255,1) 100%);
+  height: 500px;
+  width: 500px;
+  // clip-path: url(#clipping);
+  animation:
+  x 10s linear infinite alternate,
+  y 10s infinite ease-in-out;
+}
+
+.card-wrapper {
+   perspective: 500px;
+}
+
+.card {
+  transition: transform .4s ease;
+}
+
+.glass {
+  
+background: rgba(255, 255, 255, 0.21);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
+border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+a {
+  position: relative;
+  font-weight: 500;
+  text-decoration: underline;
+  color: #0FECFA;
+ 
+ & > span {
+    transition: transform .4s ease;
+    position: absolute;
+    transform: rotate(0deg) translate(-100%, 0);
+    // left: -30px;
+    // right: 0px;
+  }
+  &:hover {
+    & > span {
+      transform: translate(190px, 0);
+      // left: 150px;
+      // right: 30px;
+    }
+  }
+  &:active {
+    & > span {
+      color: #0fc7d4;
+      // left: 150px;
+      // right: 30px;
+    }
+  }
+}
+
+.tree-wrapper {
+  padding: 2rem;
+}
+
+#tree {
+  margin-bottom: 4rem;
+  height: 450px;
+  width: 450px;
+  animation: dash 5s linear;
+  path:first-of-type{
+    fill: #0FECFA;
+  }
+  path {    
+    position: absolute;
+    stroke-dashoffset: 200;
+    stroke-dasharray: 100;
+    animation: dash 5s linear reverse infinite;
+    
+    &::after {
+    content: '';
+    position: absolute;
+    background-color: red;
+    display: block;
+    width: 12px;
+    height: 12px;
+
+    }
+  }
+  
+}
+
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+
+  }
+}
+
+@keyframes x {
+  0% {
+    left:calc(0%)
+  }
+  25% {
+    left:calc(20%)
+  }
+  50% {
+    left:calc(0%)
+  }
+  75% {
+    left:calc(-20%)
+  }
+  100% {
+    left:calc(0%)
+  }
+}
+@keyframes y {
+  0% {
+    top:calc(0%)
+  }
+  25% {
+    top:calc(20%)
+  }
+  50% {
+    top:calc(0%)
+  }
+  75% {
+    top:calc(-20%)
+  }
+  100% {
+    top:calc(0%)
+  }
+}
+
+
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.display {
+  margin-top: 0px;
+  line-height: 19rem;
+  letter-spacing: .8rem;
+  color: #1A1A1A;
+  color: #303030;
+  // color: #FFFFFF;
+  font-weight: 700;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0px;
+  left: 0px;
+  font-family:  'Anuphan', sans-serif;
+  font-size: 25rem;
+  word-wrap: break-word;
+  max-width: 100vw;
+  text-align: left;
+  @media screen and (max-width: 750px) {
+    font-size: 15rem;
+    line-height: 11rem;
+    letter-spacing: .1rem;
+  }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family:  'Anuphan', sans-serif;
+}
+
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
